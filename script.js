@@ -1064,9 +1064,9 @@ spinButton.addEventListener('click', () => {
     const interval = setInterval(() => {
         movieDisplay.innerHTML = movies[Math.floor(Math.random() * movies.length)];
         i++;
-        if (i >= 10) { // Cambia la cantidad de veces que se muestran nombres aleatorios
+        if (i >= 55) { // Cambia la cantidad de veces que se muestran nombres aleatorios
             clearInterval(interval);
             movieDisplay.innerHTML = movies[Math.floor(Math.random() * movies.length)]; // Muestra el nombre final
         }
-    }, 200); // Cambia el tiempo para ajustarlo a tu preferencia
+    }, 100); // Cambia el tiempo para ajustarlo a tu preferencia
 });
