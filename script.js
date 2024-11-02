@@ -1048,7 +1048,7 @@ const movies = [
 ];
 
 // Preload sound
-const sound = new Audio('fx.m4a'); // Cambia 'tu-sonido.mp3' por el nombre de tu archivo de sonido
+const sound = new Audio('fx.wav'); // Cambia 'tu-sonido.mp3' por el nombre de tu archivo de sonido
 
 const movieDisplay = document.getElementById('movie-display');
 const spinButton = document.getElementById('spin-button');
