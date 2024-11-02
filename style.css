@@ -10,7 +10,7 @@ body {
 }
 
 #header-image {
-    width: 300px; /* Ajusta el ancho según necesites */
+    width: 200px; /* Ajusta el ancho según necesites */
     margin-bottom: 5px; /* Espaciado entre la imagen y el título */
     display: block; /* Para centrar la imagen */
     margin-left: auto; /* Para centrar */

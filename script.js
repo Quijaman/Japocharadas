@@ -1047,41 +1047,26 @@ const movies = [
     // Asegúrate de agregar más títulos hasta llegar a 1000
 ];
 
-document.getElementById('spin-button').addEventListener('click', generateMovie);
+// Preload sound
+const sound = new Audio('fx.m4a'); // Cambia 'tu-sonido.mp3' por el nombre de tu archivo de sonido
 
-function getRandomMovie() {
-    return movies[Math.floor(Math.random() * movies.length)];
-}
+const movieDisplay = document.getElementById('movie-display');
+const spinButton = document.getElementById('spin-button');
 
-function generateMovie() {
-    const resultDiv = document.getElementById('movie-display');
-    resultDiv.innerHTML = 'Generando...'; // Mensaje inicial
+spinButton.addEventListener('click', () => {
+    // Reproduce el sonido
+    sound.play();
 
-    let iterations = 0;
-    const maxIterations = 20; // Número máximo de palabras mostradas
-    let intervalSpeed = 100; // Velocidad inicial (100 ms)
-    let interval;
-
-    // Inicia el intervalo para mostrar palabras al azar
-    interval = setInterval(() => {
-        const randomWord = getRandomMovie(); // Seleccionar una película aleatoria
-        resultDiv.innerHTML = randomWord; // Mostrar el nombre aleatorio
-        changeBackgroundColor(); // Cambiar el color de fondo
-
-        iterations++;
-
-        // Cuando se alcance el número máximo de iteraciones, detener el intervalo y mostrar el resultado
-        if (iterations >= maxIterations) {
-            clearInterval(interval); // Detener el intervalo de nombres
-            setTimeout(() => {
-                const finalMovie = getRandomMovie(); // Obtener una película final
-                resultDiv.innerHTML = finalMovie; // Mostrar el nombre final
-            }, 500); // Esperar medio segundo antes de mostrar el resultado final
+    // Lógica para mostrar el nombre aleatorio
+    movieDisplay.innerHTML = "Girando...";
+    
+    let i = 0;
+    const interval = setInterval(() => {
+        movieDisplay.innerHTML = movies[Math.floor(Math.random() * movies.length)];
+        i++;
+        if (i >= 10) { // Cambia la cantidad de veces que se muestran nombres aleatorios
+            clearInterval(interval);
+            movieDisplay.innerHTML = movies[Math.floor(Math.random() * movies.length)]; // Muestra el nombre final
         }
-    }, intervalSpeed); // Intervalo inicial
-}
-
-function changeBackgroundColor() {
-    const colors = ['#ffcccc', '#ffccff', '#ccffff', '#ccffcc', '#ffffcc'];
-    document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-}
+    }, 200); // Cambia el tiempo para ajustarlo a tu preferencia
+});
